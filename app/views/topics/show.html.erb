@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Area:</b>
+  <%= @topic.area %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @topic.description %>
+</p>
+
+<p>
+  <b>Image url:</b>
+  <%= @topic.image_url %>
+</p>
+
+<p>
+  <b>Subarea:</b>
+  <%= @topic.subarea %>
+</p>
+
+
+<%= link_to 'Edit', edit_topic_path(@topic) %> |
+<%= link_to 'Back', topics_path %>

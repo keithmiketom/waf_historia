@@ -1,0 +1,18 @@
+<h1>Topic Areas</h1>
+
+<% @topics.each do |topic| %>
+<h1><%= topic.area %></h1>
+
+  	<%= link_to image_tag(topic.image_url, :alt => topic.area, :id => topic.area), :title => topic.area %>
+   <h2>Description</h2>
+    <p><%= topic.description %></p>
+   <h2>Sub-areas</h2>
+    <p><%= topic.subarea %></p>
+
+    <p><%= link_to 'Show', topic %> | <%= link_to 'Edit', edit_topic_path(topic) %> | <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<% end %>
+
+
+<br />
+
+<%= link_to 'New Topic', new_topic_path %>

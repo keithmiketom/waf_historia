@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Historia</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link rel="icon" type="image/ico" href="/favicon.ico">
+  <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="wrapper">
+		<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav">
+			<div class="container">
+				<h1><%= link_to "Historia", root_path, :class => "brand pull-left" %></h1>
+				<div class="navbar-header">
+					<%= render 'layouts/nav'%> 
+				</div>
+			</div>
+		</header>
+		
+		<main id="content" class="main">
+			<div class="container">
+				 <p class="notice"><%= notice %></p> 
+ 				 <p class="alert"><%= alert %></p>
+				<%= yield %>
+				<aside id="mainside">
+					<div>
+						<% if user_signed_in? %>
+ 				<p>Signed in as... <%= current_user.email %> (<%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>)</p> 
+			<% else %> 
+ 				<p><%= link_to 'Register', new_user_registration_path %></p> 
+ 				<p><%= link_to 'Sign in', new_user_session_path %></p>
+			<% end %>
+					</div>
+					<p>
+					this is a sidebar
+					</p>
+				</aside>
+			</div>
+		</main>
+		</div><!--end of wrapper -->
+		<hr />
+		<footer id="foot" class="bs-footer container" role="content_info">
+			<p>here is the footer</p>
+		</footer>
+
+
+<%= javascript_include_tag "application" %>
+
+</body>
+</html>
