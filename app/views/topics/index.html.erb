@@ -7,7 +7,9 @@
    <h2>Description</h2>
     <p><%= topic.description %></p>
    <h2>Sub-areas</h2>
-    <p><%= topic.subarea %></p>
+   <ul>
+    <li><%= topic.subarea %></li>
+   </ul>
 
     <p><%= link_to 'Show', topic %> | <%= link_to 'Edit', edit_topic_path(topic) %> | <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 <% end %>

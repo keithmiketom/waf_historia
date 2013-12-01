@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+ <% if current_user && @profile.user_id == current_user.id %>
+<h1>My Profile</h1>
+<% else %>
+<h1><%= @profile.firstname.titleize %>'s Profile</h1>
+<% end %>
+
+<%= image_tag avatar_url(@profile.user) %>
+
+<p>
+  <b>Name</b><br />
+  <%= @profile.firstname.titleize %> <%= @profile.lastname.titleize %>
+  
+</p>
+<p>
+  <b>Last signed in at:</b>
+  <%= @profile.user.last_sign_in_at.strftime('%d/%m/%Y %H:%M') %>
+</p>
+
+<% if current_user && @profile.user_id == current_user.id %>
+<aside>
+<h3>Contact Details</h3>
+<b>Address</b>
+<address>
+  <%= @profile.address1 %><br />
+  <%= @profile.address2 %>
+  <%= @profile.city %>
+</address>
+ <b>Mobile</b>
+<p>
+ 
+<%= @profile.mobile %>
+</p>
+  <b>Email</b>
+  <p>
+<%= @profile.user.email %>
+</p>
+<p>
+  <b>User:</b>
+  <%= @profile.user_id %>
+  </p>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>
+
+<% else %>
+<p> <%= link_to 'Back', profiles_path %> </p>
+</aside>
+<% end %>

@@ -1,6 +1,7 @@
 // Place all the styles related to the site controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+//*= require bvar
 
 html, body {height:100%;}
 main.main {
@@ -22,6 +23,7 @@ footer#foot {
   background-color:black;
   color:white;
   width:100%;
+  padding:25px 11% 10px;
   } 
 .intro{
   width:200px;
@@ -39,9 +41,12 @@ nav {
 
 aside#mainside{
  position:fixed;
- top:20%;
- right:10%;
- width:10%;
- background-color:cyan;
+ top:40%;
+ left:2%;
+ width:7%;
+ background-color:hsla(220, 30, 70, 0.7);
  padding:10px;
+ width:200px;
+ border-radius:20px;
+ text-align:center;
 }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131122234353) do
+ActiveRecord::Schema.define(:version => 20131127210242) do
 
   create_table "marks", :force => true do |t|
     t.date     "date_from"
@@ -19,6 +19,20 @@ ActiveRecord::Schema.define(:version => 20131122234353) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "profiles", :force => true do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "mobile"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
 
   create_table "topics", :force => true do |t|
     t.string   "area"

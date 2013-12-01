@@ -1,4 +1,7 @@
 Historia::Application.routes.draw do
+  resources :profiles
+
+
   devise_for :users
 
   resources :topics
@@ -16,6 +19,8 @@ Historia::Application.routes.draw do
   
   get "site/index"
   
+  get "profiles/show"
+  
   match 'about' => 'site#about'
 
   match 'contact' => 'site#contact'
@@ -23,6 +28,8 @@ Historia::Application.routes.draw do
   match 'team' => 'site#team'
       
   match 'faq' => 'site#FAQ'
+  
+  match '/myprofile' => 'profiles#myprofile'
   
 
   # The priority is based upon order of creation:
