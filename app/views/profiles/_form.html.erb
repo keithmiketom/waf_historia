@@ -10,6 +10,10 @@
       </ul>
     </div>
   <% end %>
+  <% f.fields_for :user do |builder| %>
+  	<%= builder.label :content, "thign" %>
+  	 <%= builder.text_field :content %>
+  <% end %>
 
   <div class="field">
     <%= f.label :firstname %><br />

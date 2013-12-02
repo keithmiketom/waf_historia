@@ -25,23 +25,18 @@
 				 
 				<%= yield %>
 				<% if user_signed_in? %>
-				<ul></ul>
+					<%= render 'layouts/asideli'%> 
 				<% else %> 
-				<aside id="mainside">
-					<div>
-				<h5>Login | Register</h5>
- 				<p><%= link_to 'Register', new_user_registration_path %></p> 
- 				<p><%= link_to 'Sign in', new_user_session_path %></p>
-			<% end %>
-					</div>
-					
-				</aside>
+					<%= render 'layouts/asidelo'%> 
+				<% end %>
 			</div>
 		</main>
 		</div><!--end of wrapper -->
 		<hr />
 		<footer id="foot" class="footer" role="content_info">
 			<div class"container">
+				<%= render 'layouts/footer'%> 
+
 			<p>here is the footer</p>
 			</div>
 		</footer>
