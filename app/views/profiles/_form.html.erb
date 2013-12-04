@@ -1,4 +1,4 @@
-<%= form_for(@profile) do |f| %>
+<%= form_for(@profile, :html => {:class => "form-horizontal"}) do |f| %>
   <% if @profile.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
@@ -10,42 +10,68 @@
       </ul>
     </div>
   <% end %>
-  <% f.fields_for :user do |builder| %>
-  	<%= builder.label :content, "thign" %>
-  	 <%= builder.text_field :content %>
-  <% end %>
+   <%= f.fields_for :user do |builder| %>
+ <div class="control-group">
+  	<%= builder.label :username, :class => "control-label"  %>
+  	<div class="controls">
+  	 <%= builder.text_field :username %>
+  	 </div>
+ </div>
+ <% end %>
 
-  <div class="field">
-    <%= f.label :firstname %><br />
+  <div class="control-group">
+    <%= f.label :firstname, :class => "control-label" %>
+   <div class="controls">
     <%= f.text_field :firstname %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :lastname %><br />
+ <div class="control-group">
+    <%= f.label :lastname, :class => "control-label" %>
+    <div class="controls">
     <%= f.text_field :lastname %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :address1 %><br />
+  <div class="control-group">
+    <%= f.label :address1, :class => "control-label" %>
+    <div class="controls">
     <%= f.text_field :address1 %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :address2 %><br />
+  <div class="control-group">
+    <%= f.label :address2, :class => "control-label" %>
+	<div class="controls">
     <%= f.text_field :address2 %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :city %><br />
+  <div class="control-group">
+    <%= f.label :city, :class => "control-label"%>
+	<div class="controls">
     <%= f.text_field :city %>
+    </div>
+   </div>
+    <div class="control-group">
+    <%= f.label :county, :class => "control-label"%>
+	<div class="controls">
+    <%= f.text_field :county %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :mobile %><br />
+  <div class="control-group">
+    <%= f.label :mobile, :class => "control-label" %>
+    <div class="controls">
     <%= f.text_field :mobile %>
+    </div>
   </div>
 
-   <div class="field">
-    <%= f.label :user_id %><br />
+   <div class="control-group">
+    <%= f.label :user_id, :class => "control-label" %>
+    <div class="controls">
     <%= f.text_field :user_id %>
+    </div>
     
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group">
+  	<div class="controls">
+    <%= f.submit "Update", :class => "btn btn-success" %>
+    </div>
   </div>
 <% end %>

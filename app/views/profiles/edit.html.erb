@@ -1,6 +1,8 @@
-<h1>Editing profile</h1>
+<h1>Edit Your Profile</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @profile %> |
-<%= link_to 'Back', profiles_path %>
+<!--<%# render 'userform' %>-->
+
+<%= link_to 'View Profile', @profile, :class => "btn btn-info" %> |
+<%= link_to 'All Profiles', profiles_path, :class => "btn btn-info" %>

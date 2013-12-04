@@ -28,13 +28,17 @@ gem 'jquery-rails'
 #added gems
 gem 'devise' #user login and levels
 
-gem 'forem', :github => "radar/forem" #forum gem to add discussion boards
+#gem 'forem', :github => "radar/forem" #forum gem to add discussion boards
 
 gem "acts-as-taggable-on", "~> 2.4.1" #for adding tags
 
 gem 'will_paginate', '3.0.4' #pagination
 
 gem 'mail_form'
+
+gem 'forum_monster'
+
+gem 'rails_autolink'
 
 
 # To use ActiveModel has_secure_password

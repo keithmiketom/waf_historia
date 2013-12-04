@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
+  
+  before_filter :authenticate_user!
     def myprofile
       profile = Profile.find_by_user_id(current_user.id)
       if profile.nil?

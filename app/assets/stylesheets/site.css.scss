@@ -22,7 +22,6 @@ footer#foot {
   clear:both;
   background-color:black;
   color:white;
-  width:100%;
   padding:25px 11% 10px;
   } 
 .intro{
@@ -36,7 +35,6 @@ footer#foot {
 }
 
 nav {
-  width:100%;
 }
 
 aside#mainside{
@@ -49,4 +47,18 @@ aside#mainside{
  width:200px;
  border-radius:20px;
  text-align:center;
+ z-index:1000;
+}
+
+aside#mainsideli{
+ position:fixed;
+ top:12%;
+ left:2%;
+ width:7%;
+ background-color:hsla(220, 30, 70, 0.7);
+ padding:10px;
+ width:200px;
+ border-radius:20px;
+ text-align:center;
+ z-index:1000;
 }

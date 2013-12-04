@@ -3,7 +3,11 @@
 <% else %>
 <h1><%= @profile.firstname.titleize %>'s Profile</h1>
 <% end %>
-
+<% if @profile.user.admin? %>
+<span>admin</span>
+<% else %>
+<span>Member</span>
+<%end%>
 <%= image_tag avatar_url(@profile.user) %>
 
 <p>
@@ -22,8 +26,9 @@
 <b>Address</b>
 <address>
   <%= @profile.address1 %><br />
-  <%= @profile.address2 %>
-  <%= @profile.city %>
+  <%= @profile.address2 %><br />
+  <%= @profile.city %><br />
+  <%= @profile.county %><br />
 </address>
  <b>Mobile</b>
 <p>
@@ -39,10 +44,10 @@
   <%= @profile.user_id %>
   </p>
 
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+<%= link_to 'Edit', edit_profile_path(@profile) , :class => "btn btn-warning"%> |
+<%= link_to 'Back', profiles_path , :class => "btn btn-info"%>
 
 <% else %>
-<p> <%= link_to 'Back', profiles_path %> </p>
+<p> <%= link_to 'Back', profiles_path , :class => "btn btn-info"%> </p>
 </aside>
 <% end %>

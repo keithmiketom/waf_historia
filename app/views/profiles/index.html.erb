@@ -2,9 +2,11 @@
 <div style="width:100%;">
 <h2>Members Online</h2><!-- ruby code for those online here -->
 <% @profiles.each do |profile| %>
-	<div style="float:left;width:120px;">
-	<p>	<%= image_tag avatar_url(User) %><br />
-	<%= profile.firstname.titleize %> <%= profile.lastname.titleize %> </p>
+	<div class="pfile">
+	<p><%= link_to (profile) do %>
+		<%= image_tag avatar_url(User) %><br />
+	<%= profile.firstname.titleize %> <%= profile.lastname.titleize %> 
+	<%end%></p>
 	</div>
 	
 <% end %>
@@ -13,15 +15,19 @@
 <div style="width:100%; clear:both;">
 <h2>All Members</h2>
 <% @profiles.each do |profile| %>
-	<div style="float:left;width:120px;">
-	<p>	<%= image_tag avatar_url(User) %><br />
-	<%= profile.firstname.titleize %> <%= profile.lastname .titleize%> </p>
+	<div class="pfile">
+		
+	<p><%= link_to (profile) do %>
+	<%= image_tag avatar_url(User) %><br />
+	<%= profile.firstname.titleize %> <%= profile.lastname .titleize%> 
+	<% end %></p>
 	</div>
 <% end %>
 </div>
 
 <div style="clear:both;">
 	<hr />
+<% if current_user && current_user.admin == true %>  
 <h2>List View</h2>
 
 <table class=" table table-striped table-bordered table-hover" style="clear:both;">
@@ -46,16 +52,15 @@
     <td><%= profile.address2 %></td>
     <td><%= profile.city %></td>
     <td><%= profile.mobile %></td>
-    <td><%= profile.user_id %></td>
-	<% if current_user && current_user.admin == true %>    
+    <td><%= profile.user_id %></td>  
    	 	<td><%= link_to 'Show', profile %></td>
     	<td><%= link_to 'Edit', edit_profile_path(profile) %></td>
     	<td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <%else %>
-    <td>""</td>
+    
 	<% end %>
   </tr>
-
+   <%else %>
+   <span></span>
 <% end %>
 </table>
 
