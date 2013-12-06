@@ -8,15 +8,15 @@
 				<li><a href="/contact">Contact</a></li>
 		</ul>
 		</li>
-		<li><a href="#">Blog</a></li>
+		<li><a href="/blogs">Blog</a></li>
 		<li><a href="/profiles">Members</a></li>
 		
 	</ul>
 	
 	<ul class="nav navbar-nav nav-pills" style="float:right;">	
 			<% if user_signed_in? %>
-				<li><%= image_tag avatar_url(User) %>/li>
- 				<li><a href="/myprofile">Profile </a></li>
+				<li><%= image_tag current_user.gravatar_url, :style => "width:48px;height:48px;" %></li>
+ 				<li></li>
  				<li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li> 
 			<% else %> 
  				<li><%= link_to 'Register', new_user_registration_path %></li> 
@@ -24,8 +24,9 @@
 			<% end %>
 
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" >Members area <span class="caret"></span></a>
+				<a href="/profiles" class="dropdown-toggle" data-toggle="dropdown" >Members area <span class="caret"></span></a>
 				<ul class="dropdown-menu">
+					<li><a href="/profiles">Members</a></li>
 					<li><a href="#">Topics</a></li>
 					<li><a href="#">Samples</a></li>
 					<li class="divider"></li>

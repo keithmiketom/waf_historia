@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
+    before_filter :authenticate_user!
+  
   def index
     @comments = Comment.all
 
@@ -40,14 +42,16 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(params[:comment])
+    @blog = Blog.find(params[:blog_id])
+    @comment = @blog.comments.build(params[:comment])
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render json: @comment, status: :created, location: @comment }
+        format.html { redirect_to(@blog, :notice => 'Comment was successfully created.') }
+        format.json { render json: @blog, status: :created, location: @blog }
       else
-        format.html { render action: "new" }
+         format.html { redirect_to(@blog, :notice => 
+        'Comment could not be saved. Please fill in all fields')}
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -57,10 +61,10 @@ class CommentsController < ApplicationController
   # PUT /comments/1.json
   def update
     @comment = Comment.find(params[:id])
-
+    @blog = @comment.blog
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to(@blog, :notice => 'Comment was successfully updated.') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -73,10 +77,11 @@ class CommentsController < ApplicationController
   # DELETE /comments/1.json
   def destroy
     @comment = Comment.find(params[:id])
+    @blog = Blog.find(params[:blog_id])
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to comments_url }
+       format.html { redirect_to(@blog, :notice => 'Comment was successfully deleted.') }
       format.json { head :no_content }
     end
   end

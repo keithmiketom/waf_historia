@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131204190828) do
+ActiveRecord::Schema.define(:version => 20131205223451) do
+
+  create_table "blogs", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -22,18 +29,15 @@ ActiveRecord::Schema.define(:version => 20131204190828) do
   end
 
   create_table "comments", :force => true do |t|
-    t.string   "title"
+    t.integer  "blog_id"
+    t.string   "name"
+    t.string   "email"
     t.text     "body"
-    t.integer  "user_id"
-    t.integer  "forum_id"
-    t.integer  "conversations_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  add_index "comments", ["conversations_id"], :name => "index_comments_on_conversations_id"
-  add_index "comments", ["forum_id"], :name => "index_comments_on_forum_id"
-  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+  add_index "comments", ["blog_id"], :name => "index_comments_on_blog_id"
 
   create_table "conversations", :force => true do |t|
     t.string   "title"
@@ -87,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20131204190828) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "county"
+    t.string   "email"
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
@@ -94,6 +99,23 @@ ActiveRecord::Schema.define(:version => 20131204190828) do
   create_table "sites", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       :limit => 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
   end
 
   create_table "topics", :force => true do |t|
@@ -107,6 +129,15 @@ ActiveRecord::Schema.define(:version => 20131204190828) do
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
   end
+
+  create_table "user_friendships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "user_friendships", ["user_id", "friend_id"], :name => "index_user_friendships_on_user_id_and_friend_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -125,6 +156,7 @@ ActiveRecord::Schema.define(:version => 20131204190828) do
     t.boolean  "admin"
     t.integer  "topics_count",                          :default => 0
     t.integer  "posts_count",                           :default => 0
+    t.datetime "last_seen"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

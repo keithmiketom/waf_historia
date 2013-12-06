@@ -3,12 +3,13 @@
 <% else %>
 <h1><%= @profile.firstname.titleize %>'s Profile</h1>
 <% end %>
+
+<%= image_tag avatar_url(@profile.user) %>
 <% if @profile.user.admin? %>
 <span>admin</span>
 <% else %>
 <span>Member</span>
 <%end%>
-<%= image_tag avatar_url(@profile.user) %>
 
 <p>
   <b>Name</b><br />

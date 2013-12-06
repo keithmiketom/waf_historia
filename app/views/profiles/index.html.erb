@@ -1,24 +1,29 @@
 <h1>Members</h1>
 <div style="width:100%;">
-<h2>Members Online</h2><!-- ruby code for those online here -->
-<% @profiles.each do |profile| %>
+<h2>Members Online<%= current_user.online? %></h2><!-- ruby code for those online here -->
+<% if current_user.online?  %>
+	<% @profiles.each do |profile| %>
 	<div class="pfile">
 	<p><%= link_to (profile) do %>
-		<%= image_tag avatar_url(User) %><br />
-	<%= profile.firstname.titleize %> <%= profile.lastname.titleize %> 
+		<%= image_tag profile.user.gravatar_url %><br />
+	<%= profile.firstname %> 
 	<%end%></p>
-	</div>
 	
+	</div>
+
 <% end %>
 </div>
+
+	<% end %>
 <br />
 <div style="width:100%; clear:both;">
 <h2>All Members</h2>
-<% @profiles.each do |profile| %>
+<% @profiles.each do |profile|%>
 	<div class="pfile">
 		
 	<p><%= link_to (profile) do %>
-	<%= image_tag avatar_url(User) %><br />
+		<%= image_tag profile.user.gravatar_url %>
+	<br />
 	<%= profile.firstname.titleize %> <%= profile.lastname .titleize%> 
 	<% end %></p>
 	</div>

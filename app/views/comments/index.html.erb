@@ -2,11 +2,11 @@
 
 <table>
   <tr>
-    <th>Title</th>
+    <th>Blog</th>
+    <th>Name</th>
+    <th>Email</th>
     <th>Body</th>
-    <th>User</th>
-    <th>Forum</th>
-    <th>Conversations</th>
+    <th>Blog</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,11 +14,11 @@
 
 <% @comments.each do |comment| %>
   <tr>
-    <td><%= comment.title %></td>
+    <td><%= comment.blog_id %></td>
+    <td><%= comment.name %></td>
+    <td><%= comment.email %></td>
     <td><%= comment.body %></td>
-    <td><%= comment.user %></td>
-    <td><%= comment.forum %></td>
-    <td><%= comment.conversations %></td>
+    <td><%= comment.blog %></td>
     <td><%= link_to 'Show', comment %></td>
     <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
     <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

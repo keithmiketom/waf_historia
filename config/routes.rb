@@ -1,5 +1,9 @@
 Historia::Application.routes.draw do
 
+  resources :blogs do
+      resources :comments
+  end
+
 
   resources :categories, :except => [:index, :show]
   resources :forums, :except => :index do
@@ -9,11 +13,7 @@ Historia::Application.routes.draw do
     root :to => 'categories#index', :via => :get
   end
 
-  resources :forums do
-    resources :conversations do
-        resources :comments
-    end
-  end
+ resources :user_friendships
 
 
   resources :profiles
@@ -23,7 +23,8 @@ Historia::Application.routes.draw do
 
   resources :topics
 
-
+  get 'tags/:tag', to: 'blogs#index', as: :tag
+  
   get "site/about"
 
   get "site/contact"
@@ -38,6 +39,8 @@ Historia::Application.routes.draw do
   
   get "profiles/show"
   
+  get '/:id', to: 'profiles#show', as: "profile"
+  
   match 'about' => 'site#about'
 
   match 'contact' => 'site#contact'
@@ -46,7 +49,10 @@ Historia::Application.routes.draw do
       
   match 'faq' => 'site#FAQ'
   
+  
   match '/myprofile' => 'profiles#myprofile'
+  
+  
   
 
   # The priority is based upon order of creation:

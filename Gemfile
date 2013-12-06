@@ -25,14 +25,17 @@ end
 
 gem 'jquery-rails'
 
+
 #added gems
 gem 'devise' #user login and levels
-
+gem 'devise_lastseenable'
+  gem 'gravatar_image_tag'
+gem 'simple_form'
 #gem 'forem', :github => "radar/forem" #forum gem to add discussion boards
 
 gem "acts-as-taggable-on", "~> 2.4.1" #for adding tags
 
-gem 'will_paginate', '3.0.4' #pagination
+gem 'will_paginate', '~> 3.0.5' #pagination
 
 gem 'mail_form'
 
