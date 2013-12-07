@@ -57,17 +57,23 @@
     <td><%= profile.address2 %></td>
     <td><%= profile.city %></td>
     <td><%= profile.mobile %></td>
-    <td><%= profile.user_id %></td>  
+    <td><%= profile.user_id %></td> 
+  
    	 	<td><%= link_to 'Show', profile %></td>
     	<td><%= link_to 'Edit', edit_profile_path(profile) %></td>
     	<td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     
 	<% end %>
+	
   </tr>
    <%else %>
    <span></span>
 <% end %>
+<div class="apple_pagination">
+		<%= will_paginate @profiles %>
+		</div>
 </table>
+
 
 <br />
 </div>
