@@ -8,12 +8,13 @@
 <% end %>
 <%= link_to 'New Blog Post', new_blog_path, :class => "btn btn-success" %>
 <div class="apple_pagination">
-<%= will_paginate @blogs %>
+<!--<%# will_paginate @blogs %>-->
 </div>
 </div>
 <div class="span3">
 	<h2>Tag Cloud</h2>
 <div id="tag_cloud">
+  <%= link_to 'All Articles', blogs_path %>	
   <% tag_cloud Blog.tag_counts, %w[s m l] do |tag, css_class| %>
     <%= link_to tag.name, tag_path(tag.name), class: css_class %>
   <% end %>

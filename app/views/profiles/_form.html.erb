@@ -16,9 +16,9 @@
   	<div class="controls">
   	 <%= builder.text_field :username %>
   	 </div>
- </div>
  <% end %>
 
+<%= @user.id%>
   <div class="control-group">
     <%= f.label :firstname, :class => "control-label" %>
    <div class="controls">
@@ -61,6 +61,13 @@
     <%= f.text_field :mobile %>
     </div>
   </div>
+   <div class="control-group">
+    <%= f.label :id, :class => "control-label" %>
+    <div class="controls">
+    <%= f.text_field :id %>
+    </div>
+  </div>
+
 
 
   <div class="control-group">

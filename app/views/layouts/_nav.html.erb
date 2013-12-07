@@ -15,7 +15,7 @@
 	
 	<ul class="nav navbar-nav nav-pills" style="float:right;">	
 			<% if user_signed_in? %>
-				<li><%= image_tag current_user.gravatar_url, :style => "width:48px;height:48px;" %></li>
+				<li><a href="/myprofile"><%= image_tag current_user.gravatar_url, :style => "width:48px;height:48px;" %></a></li>
  				<li></li>
  				<li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li> 
 			<% else %> 

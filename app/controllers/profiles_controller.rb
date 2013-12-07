@@ -60,7 +60,8 @@ class ProfilesController < ApplicationController
   # POST /profiles.json
   def create
     @profile = Profile.new(params[:profile])
-    #@profile = User.new(params[:id])
+    @profile = User.new(params[:id])
+    #@profile = Profile.new(params[:id])
 
     respond_to do |format|
       if @profile.save
