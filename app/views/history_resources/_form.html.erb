@@ -1,0 +1,51 @@
+<%= form_for(@history_resource, :html => {:class => "form-horizontal"}) do |f| %>
+  <% if @history_resource.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@history_resource.errors.count, "error") %> prohibited this history_resource from being saved:</h2>
+
+      <ul>
+      <% @history_resource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<div class="control-group">
+	    <%= f.label :section, :class => "control-label" %>
+   		<div class="controls">
+    		<%= f.select :section, HistoryResource::SECTIONS %>
+    	</div>
+  	</div>
+   <div class="control-group">
+    	<%= f.label :area, :class => "control-label" %>
+       	<div class="controls">
+   			 <%= f.text_field :area %>
+    	</div>
+	</div>
+	<div class="control-group">
+   	 <%= f.label :description, :class => "control-label" %>
+       	<div class="controls">
+    		<%= f.text_area :description, :size => "100x5" %>
+    	</div>
+  	</div>
+	<div class="control-group">
+   		 <%= f.label :period_from, :class => "control-label" %>
+      	<div class="controls">
+   			 <%= f.text_field :period_from %>
+    	</div>
+  	</div>
+	<div class="control-group">
+   		 <%= f.label :period_to, :class => "control-label" %>
+       	<div class="controls">
+   			 <%= f.text_field :period_to %>
+   		 </div>
+  	</div>
+	<div class="control-group">
+  		<div class="controls">
+    	<%= f.submit %>
+ 		 </div>
+ 	 </div>
+<% end %>
+
+

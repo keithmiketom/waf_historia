@@ -1,6 +1,16 @@
 Historia::Application.routes.draw do
+resources :articles, only: [:index, :show, :edit]
+
+  resources :history_resources do
+    resources :articles 
+  
+  end
+
 
   resources :blogs do
+      collection do
+        get :tag
+      end
       resources :comments
   end
 
@@ -20,6 +30,10 @@ Historia::Application.routes.draw do
   devise_for :users
 
   resources :topics
+  
+  get 'articles/index'
+  
+  match 'artarticles' => 'articles#index'
 
   get 'tags/:tag', to: 'blogs#index', as: :tag
   
@@ -36,6 +50,8 @@ Historia::Application.routes.draw do
   get "site/index"
   
   get "profiles/show"
+  
+  match 'resources' => 'history_resources#index'
   
   
   match 'about' => 'site#about'

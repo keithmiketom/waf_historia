@@ -1,0 +1,54 @@
+<%= form_for [@history_resource, @article ], :html => {:class => "form-horizontal"} do |f| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :title, :class => "control-label" %>
+    <div class="controls">
+    <%= f.text_field :title %>
+    </div>
+  </div>
+ 
+ <!-- <%#= f.hidden_field :history_resource_id, @history_resource  %>-->
+  <div class="control-group">
+    <%= f.label :image_url, :class => "control-label" %>
+    <div class="controls">
+    <%= f.text_field :image_url %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :artist, :class => "control-label" %>
+    <div class="controls">
+    <%= f.text_field :artist %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :intro, :class => "control-label" %>
+    <div class="controls">
+    <%= f.text_area :intro %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, :class => "control-label" %>
+    <div class="controls">
+    <%= f.text_area :description %>
+    </div>
+  </div>
+
+ <div class="control-group">
+ 	<div class="controls">
+    <%= f.submit %> or <%= link_to "cancel", @article.nil? ?  @article : @history_resource %>
+   	</div>
+ </div>
+<% end %>
+
+

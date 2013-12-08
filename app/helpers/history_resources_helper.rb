@@ -1,0 +1,2 @@
+module HistoryResourcesHelper
+end

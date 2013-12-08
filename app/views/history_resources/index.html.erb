@@ -1,0 +1,32 @@
+<h1>Resources</h1>
+
+<table class="table table-hover table-condensed">
+  <tr>
+    <th>Section</th>
+    <th>Description</th>
+    <th>Period from</th>
+    <th>Period to</th>
+    <th>Area</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @history_resources.each do |history_resource| %>
+  <tr>
+    <td><%= history_resource.section %></td>
+    <td><%= history_resource.description %></td>
+    <td><%= history_resource.period_from %></td>
+    <td><%= history_resource.period_to %></td>
+    <td><%= link_to (history_resource.area), history_resource %></td>
+
+    <td><%= link_to 'Edit', edit_history_resource_path(history_resource) %></td>
+    <td><%= link_to 'Destroy', history_resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to "all art", articles_path(@article) %>
+
+<br />
+
+<%= link_to 'New Resource', new_history_resource_path, :class => "btn btn-success" %>

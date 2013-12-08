@@ -1,0 +1,29 @@
+<h1><%= @history_resource.section %> Section</h1> 
+<h2><%= @history_resource.area %></h2>
+ <p>
+  <b>From </b>
+  <%= @history_resource.period_from %> - <%= @history_resource.period_to %>
+</p> 
+<p>
+  <b>Description:</b>
+  <%= @history_resource.description %>
+</p>
+
+
+<p>
+ 
+
+<%= link_to 'Edit', edit_history_resource_path(@history_resource) %> |
+<%= link_to 'Back', history_resources_path %>
+<br/>
+<%= link_to 'New Article', new_history_resource_article_path(@history_resource), :class => "btn btn-primary" %>
+
+<% @history_resource.articles.each do |article|%>
+<section>
+<p><%= link_to (article.title), history_resource_article_path(@history_resource, article) %> <%= article.artist %></p>
+<p><%= article.intro %></p>
+<hr />
+
+	
+</section>
+<% end %>

@@ -7,8 +7,8 @@ class BlogsController < ApplicationController
   else
     @blogs = Blog.all
    end
-  #  @blogs = Blog.order('created_at DESC')
-   # @blogs = Blog.paginate(:page => params[:page], :per_page => 5)
+   #@blogs = Blog.order('created_at DESC')
+  # @blogs = Blog.paginate(:page => params[:page], :per_page => 5)
 
     respond_to do |format|
       format.html # index.html.erb

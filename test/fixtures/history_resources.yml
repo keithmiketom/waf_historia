@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  section: MyString
+  description: MyString
+  period_from: MyString
+  period_to: 
+
+two:
+  section: MyString
+  description: MyString
+  period_from: MyString
+  period_to: 

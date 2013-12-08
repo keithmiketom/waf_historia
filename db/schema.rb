@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131205223451) do
+ActiveRecord::Schema.define(:version => 20131208013258) do
+
+  create_table "articles", :force => true do |t|
+    t.string   "title"
+    t.string   "image_url"
+    t.string   "artist"
+    t.text     "intro"
+    t.text     "description"
+    t.integer  "history_resources_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "articles", ["history_resources_id"], :name => "index_articles_on_history_resources_id"
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -62,6 +75,16 @@ ActiveRecord::Schema.define(:version => 20131205223451) do
     t.integer  "category_id"
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
+  end
+
+  create_table "history_resources", :force => true do |t|
+    t.string   "section"
+    t.string   "description"
+    t.string   "period_from"
+    t.string   "period_to"
+    t.string   "area"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "marks", :force => true do |t|
